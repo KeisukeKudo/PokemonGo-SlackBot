@@ -812,7 +812,7 @@ transform_from_wgs_to_gcj(Location(Fort.Latitude, Fort.Longitude))
             alert_text = direction + \
                          ' <https://pokevision.com/#/@' + str(poke.Latitude) + ',' + str(poke.Longitude) + \
                          '|' + "{0:.2f}".format(distance) + \
-                         ' m> ' + ' 地点にポケモンが出現しました!\n'.decode('utf-8') + \
+                         ' m> ' + ' 地点に'.decode('utf-8') + pokename.lower() + 'が出現しました!\n'.decode('utf-8') + \
                          'あと'.decode('utf-8') + disappear_minutes + '分'.decode('utf-8') + disappear_seconds + '秒'.decode('utf-8') + \
                          ' (' + disappear_time + 'まで) で逃げちゃいますよ!'.decode('utf-8')
 
