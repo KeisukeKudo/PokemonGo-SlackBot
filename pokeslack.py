@@ -800,18 +800,19 @@ transform_from_wgs_to_gcj(Location(Fort.Latitude, Fort.Longitude))
             disappear_seconds = str(disappear_seconds)
             if len(disappear_seconds) == 1:
                 disappear_seconds = str(0) + disappear_seconds
-            disappear_time = disappear_datetime.strftime("%H:%M:%S")
+            disappear_time = disappear_datetime.strftime("%H時%M分%S秒").decode('utf-8')
 
             # calculate direction of Pokemon in bearing degrees
             direction = bearing_degrees(origin_lat, origin_lon, poke.Latitude, poke.Longitude)
             # transform in compass direction
             direction = bearing_degrees_to_compass_direction(direction)
 
-            alert_text = 'I\'m just <https://pokevision.com/#/@' + str(poke.Latitude) + ',' + str(poke.Longitude) + \
+            alert_text = direction + \
+                         ' <https://pokevision.com/#/@' + str(poke.Latitude) + ',' + str(poke.Longitude) + \
                          '|' + "{0:.2f}".format(distance) + \
-                         ' m> ' + direction + ' until ' + disappear_time + \
-                         ' (' + disappear_minutes + ':' + disappear_seconds + ')!'
-
+                         ' m> ' + ' 地点にポケモンが出現しました!\n' + \
+                         'あと' + disappear_minutes + '分' + disappear_seconds + '秒' + ' (' + disappear_time + ')' + 'で逃げちゃいますよ!'
+            alert_text = alert_text.decode('utf-8')
             if pokemon_icons_prefix != ':pokeball:':
                 user_icon = pokemon_icons_prefix + pokename_en.lower() + ':'
             else:
