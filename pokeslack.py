@@ -632,6 +632,8 @@ def main():
 
     print('[+] Locale is ' + args.locale)
     pokemonsJSON = json.load(codecs.open(path + '/locales/pokemon.' + args.locale + '.json', "r", 'UTF-8'))
+    # for icon
+    pokemonsJSON_en = json.load(codecs.open(path + '/locales/pokemon.en.json', "r", 'UTF-8'))
 
     if args.debug:
         global DEBUG
@@ -696,7 +698,7 @@ def main():
         (x, y) = (x + dx, y + dy)
 
         process_step(args, api_endpoint, access_token, profile_response,
-                     pokemonsJSON, ignore, only)
+                     pokemonsJSON, pokemonsJSON_en, ignore, only)
 
         print('Completed: ' + str(((step + 1) + pos * .25 - .25) / (steplimit2) * 100) + '%')
 
@@ -713,7 +715,7 @@ def main():
 
 
 def process_step(args, api_endpoint, access_token, profile_response,
-                 pokemonsJSON, ignore, only):
+                 pokemonsJSON, pokemonsJSON_en, ignore, only):
     print('[+] Searching for Pokemon at location {} {}'.format(FLOAT_LAT, FLOAT_LONG))
     origin = LatLng.from_degrees(FLOAT_LAT, FLOAT_LONG)
     step_lat = FLOAT_LAT
@@ -764,8 +766,6 @@ transform_from_wgs_to_gcj(Location(Fort.Latitude, Fort.Longitude))
         except AttributeError:
             break
 
-    # for icon
-    pokemonsJSON_en = json.load(codecs.open(path + '/locales/pokemon.en.json', "r", 'UTF-8'))
     for poke in visible:
         pokeid = str(poke.pokemon.PokemonId)
         pokename = pokemonsJSON[pokeid]
