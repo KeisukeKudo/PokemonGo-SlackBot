@@ -161,25 +161,25 @@ def bearing_degrees_to_compass_direction(bearing):
     :param bearing: bearing in degrees
     :return: North, Northeast, East, etc
     """
-    if bearing >= 0 and bearing < 23:
-        direction = 'north'
+    if (bearing >= 0 and bearing < 23):
+        direction = '北'
     elif bearing >= 23 and bearing < 68:
-        direction = 'northeast'
+        direction = '北東'
     elif bearing >= 68 and bearing < 113:
-        direction = 'east'
+        direction = '東'
     elif bearing >= 113 and bearing < 158:
-        direction = 'southeast'
+        direction = '南東'
     elif bearing >= 158 and bearing < 203:
-        direction = 'south'
+        direction = '南'
     elif bearing >= 203 and bearing < 248:
-        direction = 'southwest'
+        direction = '南西'
     elif bearing >= 248 and bearing < 293:
-        direction = 'west'
+        direction = '西'
     elif bearing >= 293 and bearing < 338:
-        direction = 'northwest'
+        direction = '北西'
     elif bearing >= 338 and bearing <= 360:
-        direction = 'north'
-    return direction
+        direction = '北'
+    return direction.decode('utf-8')
 
 
 def encode(cellid):
