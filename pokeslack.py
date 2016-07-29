@@ -813,7 +813,7 @@ transform_from_wgs_to_gcj(Location(Fort.Latitude, Fort.Longitude))
                          ' m> ' + ' 地点にポケモンが出現しました!\n'.decode('utf-8') + \
                          'あと'.decode('utf-8') + disappear_minutes + '分'.decode('utf-8') + disappear_seconds + '秒'.decode('utf-8') + \
                          ' (' + disappear_time + ')' + 'で逃げちゃいますよ!'.decode('utf-8')
-            alert_text = alert_text.decode('utf-8')
+
             if pokemon_icons_prefix != ':pokeball:':
                 user_icon = pokemon_icons_prefix + pokename_en.lower() + ':'
             else:
