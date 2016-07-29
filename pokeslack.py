@@ -802,9 +802,6 @@ transform_from_wgs_to_gcj(Location(Fort.Latitude, Fort.Longitude))
             if len(disappear_seconds) == 1:
                 disappear_seconds = str(0) + disappear_seconds
             disappear_time = disappear_datetime.strftime("%H:%M:%S")
-            #lost pokemon time japan local
-            disappear_datetime_ja = disappear_datetime + timedelta(hours=9)
-            disappear_time_ja = disappear_datetime_ja.strftime("%H:%M:%S")
 
             # calculate direction of Pokemon in bearing degrees
             direction = bearing_degrees(origin_lat, origin_lon, poke.Latitude, poke.Longitude)
@@ -813,7 +810,7 @@ transform_from_wgs_to_gcj(Location(Fort.Latitude, Fort.Longitude))
 
             alert_text = 'I\'m just <https://pokevision.com/#/@' + str(poke.Latitude) + ',' + str(poke.Longitude) + \
                          '|' + "{0:.2f}".format(distance) + \
-                         ' m> ' + direction + ' until ' + disappear_time_ja + \
+                         ' m> ' + direction + ' until ' + disappear_time + \
                          ' (' + disappear_minutes + ':' + disappear_seconds + ')!'
 
             if pokemon_icons_prefix != ':pokeball:':
