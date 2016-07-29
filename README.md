@@ -9,7 +9,7 @@ https://www.themarketingtechnologist.co/pokemon-go-slack-notifications/
 
 参考記事とコメントを元に､自分用に改変してみました｡  
 デフォルトで日本語に設定しているので､引数 `-L ja` の指定は不要です｡  
-記事中ではAmazon Linuxを使用していますが､Cent OS 7.xでも同様の手順で導入できます｡  
+記事中ではAmazon Linuxを使用していますが､CentOS 7.xでも同様の手順で導入できます｡  
 まともにPython触ったのは初めてなので､おかしなところがいっぱいありそうです｡  
 ~~あと文言にセンスがない~~  
   
