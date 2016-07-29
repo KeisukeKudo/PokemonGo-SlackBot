@@ -161,25 +161,25 @@ def bearing_degrees_to_compass_direction(bearing):
     :param bearing: bearing in degrees
     :return: North, Northeast, East, etc
     """
-    if bearing >= 0 and bearing < 23:
-        direction = 'north'
+    if (bearing >= 0 and bearing < 23):
+        direction = '北'
     elif bearing >= 23 and bearing < 68:
-        direction = 'northeast'
+        direction = '北東'
     elif bearing >= 68 and bearing < 113:
-        direction = 'east'
+        direction = '東'
     elif bearing >= 113 and bearing < 158:
-        direction = 'southeast'
+        direction = '南東'
     elif bearing >= 158 and bearing < 203:
-        direction = 'south'
+        direction = '南'
     elif bearing >= 203 and bearing < 248:
-        direction = 'southwest'
+        direction = '南西'
     elif bearing >= 248 and bearing < 293:
-        direction = 'west'
+        direction = '西'
     elif bearing >= 293 and bearing < 338:
-        direction = 'northwest'
+        direction = '北西'
     elif bearing >= 338 and bearing <= 360:
-        direction = 'north'
-    return direction
+        direction = '北'
+    return direction.decode('utf-8')
 
 
 def encode(cellid):
@@ -800,17 +800,21 @@ transform_from_wgs_to_gcj(Location(Fort.Latitude, Fort.Longitude))
             disappear_seconds = str(disappear_seconds)
             if len(disappear_seconds) == 1:
                 disappear_seconds = str(0) + disappear_seconds
-            disappear_time = disappear_datetime.strftime("%H:%M:%S")
+            disappear_time = disappear_datetime.strftime("X%H時%M分%S秒").decode('utf-8')
+            #1 order of magnitude above to remove if it is zero
+            disappear_time = disappear_time.replace('X0','X').replace('X','')
 
             # calculate direction of Pokemon in bearing degrees
             direction = bearing_degrees(origin_lat, origin_lon, poke.Latitude, poke.Longitude)
             # transform in compass direction
             direction = bearing_degrees_to_compass_direction(direction)
 
-            alert_text = 'I\'m just <https://pokevision.com/#/@' + str(poke.Latitude) + ',' + str(poke.Longitude) + \
+            alert_text = direction + \
+                         ' <https://pokevision.com/#/@' + str(poke.Latitude) + ',' + str(poke.Longitude) + \
                          '|' + "{0:.2f}".format(distance) + \
-                         ' m> ' + direction + ' until ' + disappear_time + \
-                         ' (' + disappear_minutes + ':' + disappear_seconds + ')!'
+                         ' m> ' + ' 地点にポケモンが出現しました!\n'.decode('utf-8') + \
+                         'あと'.decode('utf-8') + disappear_minutes + '分'.decode('utf-8') + disappear_seconds + '秒'.decode('utf-8') + \
+                         ' (' + disappear_time + 'まで) で逃げちゃいますよ!'.decode('utf-8')
 
             if pokemon_icons_prefix != ':pokeball:':
                 user_icon = pokemon_icons_prefix + pokename_en.lower() + ':'
