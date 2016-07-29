@@ -560,7 +560,7 @@ def get_args():
     parser.add_argument("-L",
         "--locale",
         help="Locale for Pokemon names: default en, check locale folder for more options",
-        default="jp")
+        default="ja")
     parser.add_argument("-ol",
         "--onlylure",
         help='Display only lured pokéstop',
