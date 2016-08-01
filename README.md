@@ -13,5 +13,6 @@ https://www.themarketingtechnologist.co/pokemon-go-slack-notifications/
 まともにPython触ったのは初めてなので､おかしなところがいっぱいありそうです｡  
 ~~あと文言にセンスがない~~  
   
+**※2016/07/31のアップデートでPokeVisionがサービス停止したので､現在は利用できません｡**  
 イメージ  
 ![pokeslack_image](https://github.com/KeisukeKudo/ImageStorage/blob/master/pokeslac_image.png)
